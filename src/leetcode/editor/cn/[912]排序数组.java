@@ -33,7 +33,7 @@ package leetcode.editor.cn;//给你一个整数数组 nums，请你将该数组�
 import java.util.Arrays;
 
 //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
+class SortSolution {
     public int[] sortArray(int[] nums) {
         return selectionSort(nums);
     }
