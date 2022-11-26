@@ -1,0 +1,69 @@
+## 动态规划思路
+
+&emsp;&emsp;这一题想通之后其实很简单，首先我们最容易想到的就是暴力法，两层for循环直接暴力破解，但是会超时，所以我们想到动态规划。动态规划最主要的就是动态转移方程，这一题的也很好找，我一说你就明白了。
+
+&emsp;&emsp;这个题总共就两种状态：`1.当天有股票 2.当天没股票`。这里我们使用二维数组 `dp[prices.length][2]` 来记录每天的两种状态。例如：`dp[0][0]`代表第一天手里没有股票，`dp[0][1]`代表手里有股票。
+
+&emsp;&emsp;我们要求的是每天手里有股票和没有股票的最大利润，下面我给大家分开讨论：
+
+- 当天没有股票`dp[i][0]`这支股票有两种可能：
+
+  - 昨天就没有股票：`dp[i - 1][0]`
+  - 昨天有股票，今天卖了:`dp[i - 1][1] + prices[i]`
+- 当天有股票`dp[i][1]`这支股票有两种可能：
+  - 昨天的股票在手里没卖出去： `dp[i - 1][1]`
+  - 昨天没有股票了，今天刚买,刚买的时候，手里本来是没钱的（没钱的原因是因为本题要求只能有一次股票交易），所以是`dp[i - 1][0] - prices[i]` =  `0 - prices[i] = -prices[i]`
+
+&emsp;&emsp;最后返回最后一天手里没股票的时候的最大利润即可，也就是 `dp[prices.length - 1][0]`
+
+代码如下👇👇👇
+
+### 代码
+
+* java
+
+```java
+class Solution {
+    public int maxProfit(int[] prices) {
+            int length = prices.length;
+            //初始化
+            int[][] dp = new int[length][2];
+            //base case：第一天的时候，没股票手里利润是0，有股票的时候手里利润是-prices[0]
+            dp[0][1] = -prices[0];
+            dp[0][0] = 0;
+            for(int i = 1;i < length; i ++){
+                //手里没股票：
+                dp[i][0] = Math.max(dp[i - 1][0],dp[i - 1][1] + prices[i]);
+                //手里有股票
+                dp[i][1] = Math.max(dp[i - 1][1],- prices[i]);
+            }
+            return dp[length - 1][0];
+    }
+}
+```
+
+## 优化
+
+&emsp;&emsp;从上面我们可以看到，我们无非是用一个二维数组保存了两个状态，一个是手里有股票，一个是手里没股票，所以代码还可以优化。
+
+* java
+
+```java
+class Solution {
+    public int maxProfit(int[] prices) {
+            int length = prices.length;
+            //两个状态：手里没股票，手里有股票
+            int dp0 = 0,dp1 = Integer.MIN_VALUE;
+            for(int i = 0;i < length; i ++){
+                //手里没股票
+                dp0 = Math.max(dp0,dp1 + prices[i]);
+                //手里有股票
+                dp1 = Math.max(dp1,-prices[i]);
+            }
+            //返回没股票的时候
+            return dp0;
+
+    }
+}
+```
+

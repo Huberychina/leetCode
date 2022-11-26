@@ -40,7 +40,7 @@ package leetcode.editor.cn;//给定两个字符串形式的非负整数 num1 和
 
 
 //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
+class TwoStringAddSolution {
     public static void main(String[] args) {
         System.out.println(addStrings("11","123"));
     }
