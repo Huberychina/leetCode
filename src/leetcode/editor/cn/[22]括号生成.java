@@ -30,9 +30,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
+class ParenthesisGenerateSolution {
     public static void main(String[] args) {
-        System.out.println(new Solution().generateParenthesis(3));
+        System.out.println(new ParenthesisGenerateSolution().generateParenthesis(3));
     }
     List<String> resultList = new ArrayList<>();
     StringBuilder sb = new StringBuilder();
