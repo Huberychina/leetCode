@@ -33,7 +33,7 @@ package leetcode.editor.cn;//给定一个可包含重复数字的序列 nums ，
 import java.util.*;
 
 //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
+class PermuteUniqueSolution {
 
     public List<List<Integer>> permuteUnique(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
@@ -65,7 +65,7 @@ class Solution {
 
     public static void main(String[] args) {
         int[] nums = {1, 1, 3};
-        Solution solution = new Solution();
+        PermuteUniqueSolution solution = new PermuteUniqueSolution();
         List<List<Integer>> lists = solution.permuteUnique(nums);
         System.out.println(lists);
     }
