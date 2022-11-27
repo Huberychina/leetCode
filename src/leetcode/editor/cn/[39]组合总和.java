@@ -47,9 +47,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
+class CombinationSumSolution {
     public static void main(String[] args) {
-        System.out.println(new Solution().combinationSum(new int[]{2,3,6,7},7));
+        System.out.println(new CombinationSumSolution().combinationSum(new int[]{2,3,6,7},7));
     }
     int target = 0;
     List<List<Integer>> result = new ArrayList<>();
